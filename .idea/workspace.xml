@@ -2,17 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c920fd4c-cda1-4045-8847-7a23e8348a3e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/parser.loc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parser.loc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/proxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/simple_html_dom.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdo/pdo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,6 +44,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <servers />
@@ -43,9 +58,29 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="725" y="377" width="531" height="360" key="#Composer" timestamp="1597062174840">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="725" y="377" width="531" height="360" key="#Composer/72.27.1848.1053@72.27.1848.1053" timestamp="1597062174840" />
     <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597051877518">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1597051877518" />
+    <state x="729" y="468" width="523" height="178" key="ComposerInitDialogKey" timestamp="1597062165636">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="729" y="468" width="523" height="178" key="ComposerInitDialogKey/72.27.1848.1053@72.27.1848.1053" timestamp="1597062165636" />
+    <state x="750" y="273" width="491" height="568" key="NewPhpClassDialog" timestamp="1597071126412">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="750" y="273" width="491" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1597071126412" />
+    <state x="687" y="292" width="618" height="522" key="find.popup" timestamp="1597065954712">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="687" y="292" width="618" height="522" key="find.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1597065954712" />
+    <state x="660" y="252" key="run.anything.popup" timestamp="1597066040268">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1597066040268" />
   </component>
 </project>

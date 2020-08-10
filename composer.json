@@ -1,0 +1,12 @@
+{
+    "name": "potap/guzzle",
+    "authors": [
+        {
+            "name": "potap",
+            "email": "ilya.birenko.01@mail.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}

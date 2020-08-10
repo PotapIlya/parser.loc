@@ -1,64 +1,92 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="/files/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-	<main>
-		<div class="container">
-
-			<div class="wrapper">
-
-				<?
-					require_once 'pdo/pdo.php';
-
-					$query = $mysql->prepare("SELECT * FROM parser");
-					$query->execute();
-					$res = $query->fetchAll();
+<?php
 
 
-					foreach ($res as $item)
-					{
-				?>
+require_once __DIR__.'/vendor/autoload.php';
 
-					<div class="d-flex flex-column px-4">
+use GuzzleHttp\Client as Client;
 
-						<div class="d-flex align-items-center justify-content-between">
-							<div>
-								<h3><?=$item['title']?></h3>
-								<span><?=$item['category']?></span>
-							</div>
-							<div>
-								<p>Цена: <span><?=$item['price']?></span></p>
-								<a href="<?=$item['href']?>" class="btn btn-success">Перейти</a>
-							</div>
-						</div>
-						<div>
-							<h3 class="text-center">Описание</h3>
-							<style>
-								br{
-									display: none;
-								}
-							</style>
-							<p>
-								<?=$item['text']?>
-							</p>
-						</div>
+$client = new Client([
+    'base_uri' => 'https://whoer.net/ru',
+    'verify'  => false,
+    'allow_redirects' => false,
+    'cookies' => true,
+    'headers' => [                         // устанавливаем различные заголовки
+        'User-Agent'   => 'Mozilla/5.0 (Linux 3.4; rv:64.0) Gecko/20100101 Firefox/15.0',
+        'Accept'       => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Content-Type' => 'application/x-www-form-urlencoded' // кодирование данных формы, в такой кодировке
+    ],
+//    'proxy' => 'tcp://165.225.106.61:10605'
+]);
 
-					</div>
+$client = new GoutteClient();
+$client->setClient(new GuzzleHttpClient(['proxy' => 'http://195.181.161.229:80']));
 
 
-				<? } ?>
+$html = $client->request("GET", '/', [
+//        'proxy' => 'http://195.181.161.229:80',
+]);
 
-			</div>
+echo $html->getBody()->getContents();
 
 
-		</div>
-	</main>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////$url = 'https://hidemy.name/ru/proxy-list/';
+//$url = 'https://slivcours.ru/';
+//
+//
+//$client = new Client([
+//    'base_uri' => $url,
+//    'verify'  => false,
+//    'allow_redirects' => false,
+//    'cookies' => true,
+//    'headers' => [                         // устанавливаем различные заголовки
+//        'User-Agent'   => 'Mozilla/5.0 (Linux 3.4; rv:64.0) Gecko/20100101 Firefox/15.0',
+//        'Accept'       => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+//        'Content-Type' => 'application/x-www-form-urlencoded' // кодирование данных формы, в такой кодировке
+////            браузер отсылает данные на сервер
+//    ]
+//]);
+//
+//$login = $client->request('POST', '/pages/auth.php', [
+//        'form_params' => [
+//            'login' => 'ivan',
+//            'password' => 'ivanivanivan',
+//            'do_login' => '',
+//        ]
+//]);
+//
+//$cookie = $login->getHeaderLine('Set-Cookie' );
+//
+//$discounts = $client->request('GET','/index.php',[
+//    'headers' => [
+//        'Cookie' => $cookie
+//    ],
+////    'debug' => true // если захотите посмотреть что-же отправляет ваш скрипт, расскоментируйте
+//]);
+//
+//$html = $discounts->getBody()->getContents();
+//
+//
+//
+//echo file_get_contents($html);
+
+
