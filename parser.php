@@ -48,6 +48,7 @@ class Parser
                 $this->index++;
                 $this->url = $this->defaultUrl.$this->index;
 
+//                echo $this->url.'<br>';
 
 
                 $this->serchHtml($this->url, $pdo);
@@ -132,16 +133,16 @@ class Parser
     }
 }
 
-//$array = [
-//	'url' => 'https://freelancehunt.com/projects?tags[]=php&tags[]=javascript&tags[]=html&tags[]=CSS/HTML&tags[]=Vue.js&page=',
-//	'wrapper' => '.table.table-normal.project-list tbody tr',
-//	'data' => 'data-published',
-//	'href' => 'a',
-//	'title' => 'a',
-//	'price' => '.text-green.price.with-tooltip',
-//	'category' => 'td.left small',
-//	'text' => '#project-description',
-//];
+$array = [
+	'url' => 'https://freelancehunt.com/projects?tags[]=php&tags[]=javascript&tags[]=html&tags[]=CSS/HTML&tags[]=Vue.js&page=',
+	'wrapper' => '.table.table-normal.project-list tbody tr',
+	'data' => 'data-published',
+	'href' => 'a',
+	'title' => 'a',
+	'price' => '.text-green.price.with-tooltip',
+	'category' => 'td.left small',
+	'text' => '#project-description',
+];
 
 
 //$array = [
