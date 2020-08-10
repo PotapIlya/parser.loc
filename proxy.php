@@ -18,12 +18,12 @@ class Proxy
 	private function parse()
 	{
 
-		echo $this->iAmBrouser($this->url);
+		echo $this->iAmBrouser();
 
 	}
 	private function iAmBrouser()
 	{
-		$curl = curl_init($url);
+		$curl = curl_init($this->url);
 		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($curl, CURLOPT_HEADER, 1);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
