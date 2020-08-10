@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c920fd4c-cda1-4045-8847-7a23e8348a3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/this.is.fiel.fir.simple" afterDir="false" />
-    </list>
+    <list default="true" id="c920fd4c-cda1-4045-8847-7a23e8348a3e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,5 +18,11 @@
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597051877518">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1597051877518" />
   </component>
 </project>
