@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2a0226d1-f1b1-47df-b816-f0dd8e78a985" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="c920fd4c-cda1-4045-8847-7a23e8348a3e" name="Default Changelist" comment="" />
+>>>>>>> simple_php
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="1fu07RdYMoOR5xtl3jVmTt3XSQJ" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,5 +44,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+=======
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597051877518">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="658" y="355" width="666" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1597051877518" />
+>>>>>>> simple_php
   </component>
 </project>
