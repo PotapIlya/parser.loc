@@ -18,8 +18,8 @@ $client = new Client([
 //    'proxy' => 'tcp://165.225.106.61:10605'
 ]);
 
-$client = new GoutteClient();
-$client->setClient(new GuzzleHttpClient(['proxy' => 'http://195.181.161.229:80']));
+//$client = new GoutteClient();
+//$client->setClient(new GuzzleHttpClient(['proxy' => 'http://195.181.161.229:80']));
 
 
 $html = $client->request("GET", '/', [
