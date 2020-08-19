@@ -9,20 +9,12 @@ class Proxy
 {
 //	private $url ='https://hidemy.name/ru/proxy-list/';
 //	private $url = 'https://2ip.ru/';
-private $url = 'https://kwork.ru/projects?c=11&page=1';
+//    private $url = 'https://kwork.ru/projects?c=11&page=1';
 
-
-
-
-//	private $proxy = '88.198.50.103:3128';
-//	private $proxytype = 'HTTP';
 
 	function __construct()
 	{
-
 		$this->parse();
-//
-
 	}
 	private function parse()
 	{
@@ -48,6 +40,7 @@ private $url = 'https://kwork.ru/projects?c=11&page=1';
 	}
 	private function iAmBrouser()
 	{
+
 		$client = new Client([
 			'verify'  => false,
 			'allow_redirects' => false,
@@ -60,15 +53,12 @@ private $url = 'https://kwork.ru/projects?c=11&page=1';
 //    'proxy' => 'tcp://165.225.106.61:10605'
 		]);
 
-//		$config['proxy'] = str_replace( ['tcp://', 'https://'] , 'http://', '165.227.35.11:80');
 
-//		$HttpClient = new \GuzzleHttp\Client( $config );
-
-
-		$http = $client->request("GET", $this->url, [
-        'proxy' => 'tcp://165.227.35.11:80'
+        $http = $client->request("GET", 'https://2ip.ru/', [
+            'proxy' => 'tcp://165.227.35.11:80'
 //			'proxy' => 'http://username:password@165.227.35.11:80'
 		]);
+
 		echo $http->getBody();
 
 //

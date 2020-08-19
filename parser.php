@@ -13,6 +13,7 @@ class Parser
 	private $status = true;
 	private $index = 0;
 
+	private $data_teg = null;
     private $url = null;
     private $defaultUrl = null;
     private $classWrapper = null;
@@ -29,6 +30,7 @@ class Parser
         $this->url = $array['url'];
         $this->defaultUrl = $array['url'];
 
+        $this->data_teg = $array['data_teg'];
         $this->classWrapper = $array['wrapper'];
         $this->classData = $array['data'];
         $this->classHref = $array['href'];
@@ -39,42 +41,44 @@ class Parser
 
         if (!is_null($this->url))
         {
+            $clientHttp = $this->checkHttp();
+
             $pdo = $this->pdo();
-            $this->pages($pdo);
+            $this->pages($pdo, $clientHttp);
         }
     }
-    private function pages($pdo){
-
-        while ($this->status) {
-        	$http = $this->checkUrl($this->url);
-            if (!empty($http))
-            {
-                $this->index++;
-                $this->url = $this->defaultUrl.$this->index;
-
-//                echo $this->url.'<br>';
-
-
-                $this->serchHtml($http, $pdo);
-            }
-            else
-            {
-                $this->status = false;
-            }
-        }
+    private function pages($pdo, $clientHttp)
+    {
+        $this->checkUrl($this->url, $clientHttp);
+//        while ($this->status) {
+//        	$http = $this->checkUrl($this->url, $clientHttp);
+//            if (!empty($http))
+//            {
+//                $this->index++;
+//                $this->url = $this->defaultUrl.$this->index;
+//
+////                echo $this->url.'<br>';
+//
+//                $this->serchHtml($http, $pdo);
+//            }
+//            else
+//            {
+//                $this->status = false;
+//            }
+//        }
     }
 
     private function serchHtml($http, $pdo)
     {
         $html = str_get_html($http);
+//        echo $html;
 
         foreach ($html->find($this->classWrapper) as $i=>$wrapper)
         {
-
             $data = $wrapper->attr[$this->classData];
 
             $sth = $pdo->prepare("SELECT * FROM `parser` WHERE id_published=:id_published");
-            $sth->execute(['id_published' => $data,]);
+            $sth->execute(['id_published' => $this->data_teg.$data,]);
             $result = $sth->fetchAll();
 
 //            var_dump($result);
@@ -86,7 +90,7 @@ class Parser
 
                 $sth = $pdo->prepare("INSERT INTO parser SET id_published=:id_published, title=:title, href=:href, price=:price, category=:category, text=:text");
                 $sth->execute([
-                    'id_published' => $data,
+                    'id_published' => $this->data_teg.$data,
                     'title' => $wrapper->find($this->classTitle, 0)->innertext,
                     'href' => $href,
                     'price' => $wrapper->find($this->classPrice, 0),
@@ -96,37 +100,60 @@ class Parser
 
                 echo $this->number++.'da'.'<br>';
             }
-            else
-            {
+            else {
                 echo $this->number++.'net'.'<br>';
             }
 
         }
     }
-    private function checkUrl($url)
+    private function checkUrl($url, $clientHttp)
     {
-		$client = new Client([
-			'verify'  => false,
-			'allow_redirects' => false,
+        $http = new Client([
+            'verify'  => false,
+            'allow_redirects' => false,
 //			'cookies' => true,
-			'headers' => [                         // устанавливаем различные заголовки
-				'User-Agent'   => 'Mozilla/5.0 (Linux 3.4; rv:64.0) Gecko/20100101 Firefox/15.0',
-				'Accept'       => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-				'Content-Type' => 'application/x-www-form-urlencoded'
-			],
-//    'proxy' => 'tcp://165.225.106.61:10605'
-		]);
+            'headers' => [
+                'User-Agent'   => 'Mozilla/5.0 (Linux 3.4; rv:64.0) Gecko/20100101 Firefox/15.0',
+                'Accept'       => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            ],
+//            'proxy'=> 'http://username:password@12.34.56.78:3128'
 
-		$http = $client->request("GET", $url, [
-//        'proxy' => 'http://195.181.161.229:80',
-		]);
+        ]);
 
-//        if ($http === 200 && !is_null($html)) {{
-        if ($http->getStatusCode() === 200) {
-			return $http->getBody();
-		} else {
-			return false;
-		}
+		$http = $clientHttp->request("GET", 'https://2ip.ru/',
+        [
+            'verify' => false,
+            'proxy' => 'http://104.129.194.61:10605'
+//             'proxy' => 'http://username:password@12.34.56.78:3128',
+//             'proxy'=> 'tcp://12.34.56.78:3128'
+//                'request.options' => [
+//                    'proxy' => 'tcp://12.34.56.78:3128',
+//                ],
+        ]);
+
+        var_dump( $http->getHeaders()['Set-Cookie'][1]);
+
+//        if ($http->getStatusCode() === 200) {
+//			return $http->getBody();
+//		} else {
+//			return false;
+//		}
+    }
+    private function checkHttp()
+    {
+        return new Client([
+            'verify'  => false,
+            'allow_redirects' => false,
+//			'cookies' => true,
+            'headers' => [
+                'User-Agent'   => 'Mozilla/5.0 (Linux 3.4; rv:64.0) Gecko/20100101 Firefox/15.0',
+                'Accept'       => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            ],
+//            'proxy'=> 'http://username:password@12.34.56.78:3128'
+
+        ]);
     }
 	private function pdo()
 	{
@@ -139,7 +166,8 @@ class Parser
 }
 
 $array = [
-	'url' => 'https://freelancehunt.com/projects?tags[]=php&tags[]=javascript&tags[]=html&tags[]=CSS/HTML&tags[]=Vue.js&page=',
+	'url' => 'https://freelancehunt.com/projects?tags[]=html&tags[]=CSS/HTML&page=',
+    'data_teg' => 'freelancehunt_',
 	'wrapper' => '.table.table-normal.project-list tbody tr',
 	'data' => 'data-published',
 	'href' => 'a',
